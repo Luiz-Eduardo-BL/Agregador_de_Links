@@ -1,5 +1,7 @@
 ## Agregador de Links
 
+[Acesse para ver!!](https://agregadordelinks.netlify.app/)
+
 Este é um aplicativo web simples que permite aos usuários adicionar, pesquisar, atualizar e excluir links. Ele foi desenvolvido usando React.js no frontend e Node.js no backend, juntamente com o banco de dados SQLite.
 Funcionalidades
 
