@@ -15,6 +15,7 @@ const App = () => {
 
   useEffect(() => {
     fetchLinks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchLinks = async () => {
@@ -94,7 +95,7 @@ const App = () => {
         <form onSubmit={handleSearchSubmit}>
           <label>Pesquisar:</label>
           <input type="text" value={searchTerm} onChange={handleSearch} />
-          <button type="submit">Pesquisar</button>
+          {/* <button type="submit">Pesquisar</button> */}
         </form>
       </div>
 
@@ -103,7 +104,7 @@ const App = () => {
           <li key={link.id}>
             <a href={link.url}>{link.title}</a>
             <button onClick={() => handleDelete(link.id)}>Deletar</button>
-            <button onClick={() => handleUpdate(link)}>Atualizar</button>
+            <button onClick={() => handleUpdate(link)}>Ver URL</button>
             {selectedLink && selectedLink.id === link.id && (
               <div>
                 <p>URL: {selectedLink.url}</p>
