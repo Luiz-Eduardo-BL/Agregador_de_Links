@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node src/backend/src/index.js",
     "dev": "vite",
-    "build": "node build.js",
+    "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -19,7 +19,7 @@
     "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "require": "^0.4.4",
+    "require": "^2.4.20",
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
