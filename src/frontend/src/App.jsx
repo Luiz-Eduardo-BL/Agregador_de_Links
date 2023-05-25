@@ -41,6 +41,7 @@ const App = () => {
         url: '',
         type: ''
       });
+      console.log("funcionou")
       fetchLinks();
     } catch (error) {
       console.error(error);
