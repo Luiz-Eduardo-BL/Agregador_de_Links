@@ -43,8 +43,8 @@ Abra o terminal e navegue até o diretório do projeto.
 Inicie o backend:
 
 ```shell
-cd backend
-node index.js
+cd Agregador
+node src/backend/src/index.js
 ```
 
 Em outro terminal, inicie o frontend:
