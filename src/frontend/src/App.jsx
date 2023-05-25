@@ -95,7 +95,6 @@ const App = () => {
         <form onSubmit={handleSearchSubmit}>
           <label>Pesquisar:</label>
           <input type="text" value={searchTerm} onChange={handleSearch} />
-          {/* <button type="submit">Pesquisar</button> */}
         </form>
       </div>
 

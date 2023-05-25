@@ -1,6 +1,6 @@
 import express, { json } from 'express';
 import cors from 'cors';
-import { Database } from 'sqlite3';
+import sqlite3 from 'sqlite3';
 
 const app = express();
 const port = 3001;
@@ -8,7 +8,7 @@ const port = 3001;
 app.use(cors());
 app.use(json());
 
-const db = new Database('database.sqlite', (err) => {
+const db = new sqlite3.Database('database.sqlite', (err) => {
   if (err) {
     console.error(err.message);
     throw err;
