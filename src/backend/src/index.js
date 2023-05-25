@@ -5,11 +5,7 @@ import sqlite3 from 'sqlite3';
 const app = express();
 const port = 3001;
 
-app.use(cors(
-  // {
-  //   origin: 'agregador-gamma.vercel.app/',
-  // }
-));
+app.use(cors());
 app.use(json());
 
 const db = new sqlite3.Database('database.sqlite', (err) => {
@@ -51,38 +47,44 @@ app.get('/api/links', (req, res) => {
 });
 
 
-app.post('/api/links', (req, res) => {
-  const { title, url, type } = req.body;
+if (typeof window === 'undefined') {
+  // Código executado apenas no lado do servidor (Node.js)
 
-  if (!title || !url || !type) {
-    return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
-  }
+  app.post('/api/links', (req, res) => {
+    const { title, url, type } = req.body;
 
-  db.run('INSERT INTO links (title, url, type) VALUES (?, ?, ?)', [title, url, type], function (err) {
-    if (err) {
-      console.log(err);
-      res.status(500).json({ error: 'Erro interno do servidor' });
-    } else {
-      res.json({ message: 'Link criado com sucesso', id: this.lastID });
-    }
-  });
-});
-
-app.delete('/api/links/:id', (req, res) => {
-  const linkId = req.params.id;
-
-  const sql = 'DELETE FROM links WHERE id = ?';
-  db.run(sql, [linkId], function (err) {
-    if (err) {
-      console.error(err.message);
-      return res.status(500).send('Erro ao deletar o link.');
+    if (!title || !url || !type) {
+      return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
     }
 
-    console.log(`Link with id ${linkId} deleted.`);
-    return res.status(200).send('Link deletado com sucesso.');
+    db.run('INSERT INTO links (title, url, type) VALUES (?, ?, ?)', [title, url, type], function (err) {
+      if (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+      } else {
+        res.json({ message: 'Link criado com sucesso', id: this.lastID });
+      }
+    });
   });
-});
 
-app.listen(port, () => {
-  console.log(`Servidor backend em execução em http://localhost:${port}`);
-});
+  app.delete('/api/links/:id', (req, res) => {
+    const linkId = req.params.id;
+
+    const sql = 'DELETE FROM links WHERE id = ?';
+    db.run(sql, [linkId], function (err) {
+      if (err) {
+        console.error(err.message);
+        return res.status(500).send('Erro ao deletar o link.');
+      }
+
+      console.log(`Link with id ${linkId} deleted.`);
+      return res.status(200).send('Link deletado com sucesso.');
+    });
+  });
+
+  app.listen(port, () => {
+    console.log(`Servidor backend em execução em http://localhost:${port}`);
+  });
+}
+
+export default app;
