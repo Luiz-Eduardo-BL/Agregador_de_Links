@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const baseUrl = "https://agregador-gamma.vercel.app/";
+const baseUrl = "https://agregador-9ol3ebpuc-luiz-eduardo-bl.vercel.app/";
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +41,6 @@ const App = () => {
         url: '',
         type: ''
       });
-      console.log("funcionou")
       fetchLinks();
     } catch (error) {
       console.error(error);
