@@ -5,7 +5,10 @@ import sqlite3 from 'sqlite3';
 const app = express();
 const port = 3001;
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://agregador-9ol3ebpuc-luiz-eduardo-bl.vercel.app',
+  }
+));
 app.use(json());
 
 const db = new sqlite3.Database('database.sqlite', (err) => {
