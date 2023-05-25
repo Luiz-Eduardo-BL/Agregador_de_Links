@@ -6,7 +6,7 @@ const app = express();
 const port = 3001;
 
 app.use(cors({
-    origin: 'https://agregador-9ol3ebpuc-luiz-eduardo-bl.vercel.app',
+    origin: 'agregador-gamma.vercel.app/',
   }
 ));
 app.use(json());

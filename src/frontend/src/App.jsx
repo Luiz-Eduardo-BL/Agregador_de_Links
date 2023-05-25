@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const baseUrl = "https://agregador-9ol3ebpuc-luiz-eduardo-bl.vercel.app/";
+const baseUrl = "agregador-gamma.vercel.app/";
 
 const App = () => {
   const [formData, setFormData] = useState({
