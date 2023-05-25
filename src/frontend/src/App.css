@@ -46,6 +46,7 @@ button {
   margin-top: 0.5rem;
   margin-left: 0.5rem;
   padding: 0.5rem 1rem;
+  font-size: medium;
   background-color: #007bff7c;
   color: #000000;
   border: none;
@@ -68,8 +69,6 @@ input[type="text"] {
   display: flex;
   margin-top: 0.5rem;
   padding: 0.5rem;
-  background-color: #007bff;
-  color: #fff;
   border: none;
   cursor: pointer;
   border-radius: 4px;

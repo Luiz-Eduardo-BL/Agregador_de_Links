@@ -117,7 +117,7 @@ const App = () => {
       
 
       <button className="dark-mode-button" onClick={handleToggleDarkMode}>
-        {darkMode ? <i className="material-icons">Lua</i> : <i className="material-icons">Sol</i>}
+        {darkMode ? <i className="material-icons">🌑</i> : <i className="material-icons">🌤</i>}
       </button>
     </div>
   );
