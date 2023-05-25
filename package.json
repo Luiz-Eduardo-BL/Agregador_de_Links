@@ -3,9 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
+    "start": "node src/backend/src/index.js",
     "dev": "vite",
-    "build": "vite build",
+    "build": "node build.js",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -15,6 +19,7 @@
     "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "require": "^0.4.4",
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
@@ -25,6 +30,9 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
-    "vite": "^4.3.2"
+    "vite": "^4.3.2",
+    "webpack": "^5.84.0",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   }
 }
