@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
+const baseUrl = "https://agregador-9ol3ebpuc-luiz-eduardo-bl.vercel.app/";
+
 const App = () => {
   const [formData, setFormData] = useState({
     title: '',
@@ -15,12 +17,11 @@ const App = () => {
 
   useEffect(() => {
     fetchLinks();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchLinks = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/links?search=${searchTerm}`);
+      const response = await axios.get(`${baseUrl}api/links?search=${searchTerm}`);
       setLinks(response.data);
     } catch (error) {
       console.error(error);
@@ -34,7 +35,7 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/api/links', formData);
+      await axios.post(`${baseUrl}api/links`, formData);
       setFormData({
         title: '',
         url: '',
@@ -48,7 +49,7 @@ const App = () => {
 
   const handleDelete = async (linkId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/links/${linkId}`);
+      await axios.delete(`${baseUrl}api/links/${linkId}`);
       fetchLinks();
     } catch (error) {
       console.error(error);
@@ -113,7 +114,6 @@ const App = () => {
           </li>
         ))}
       </ul>
-      
 
       <button className="dark-mode-button" onClick={handleToggleDarkMode}>
         {darkMode ? <i className="material-icons">🌑</i> : <i className="material-icons">🌤</i>}
