@@ -5,9 +5,10 @@ import sqlite3 from 'sqlite3';
 const app = express();
 const port = 3001;
 
-app.use(cors({
-    origin: 'agregador-gamma.vercel.app/',
-  }
+app.use(cors(
+  // {
+  //   origin: 'agregador-gamma.vercel.app/',
+  // }
 ));
 app.use(json());
 
