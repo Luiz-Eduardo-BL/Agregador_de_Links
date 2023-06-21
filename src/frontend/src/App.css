@@ -1,10 +1,12 @@
 .container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  height: 100vh;
-  font-family: sans-serif;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
 }
 
 .dark-mode {

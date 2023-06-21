@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-const baseUrl = "agregador-gamma.vercel.app/";
+const baseUrl = "http://localhost:3001/";
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +27,9 @@ const App = () => {
       setLinks(response.data);
     } catch (error) {
       console.error(error);
+      toast.error('Ocorreu um erro ao buscar os links.', {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
   };
 
@@ -44,6 +49,9 @@ const App = () => {
       fetchLinks();
     } catch (error) {
       console.error(error);
+      toast.error('Ocorreu um erro ao adicionar o link.', {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
   };
 
@@ -53,6 +61,9 @@ const App = () => {
       fetchLinks();
     } catch (error) {
       console.error(error);
+      toast.error('Ocorreu um erro ao excluir o link.', {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
   };
 
@@ -102,22 +113,33 @@ const App = () => {
       <ul>
         {filteredLinks.map((link) => (
           <li key={link.id}>
-            <a href={link.url}>{link.title}</a>
-            <button onClick={() => handleDelete(link.id)}>Deletar</button>
-            <button onClick={() => handleUpdate(link)}>Ver URL</button>
-            {selectedLink && selectedLink.id === link.id && (
-              <div>
-                <p>URL: {selectedLink.url}</p>
-                <p>Tipo: {selectedLink.type}</p>
-              </div>
-            )}
+            <div>
+              <strong>{link.title}</strong> - {link.url} ({link.type})
+            </div>
+            <div>
+              <button onClick={() => handleDelete(link.id)}>Excluir</button>
+              <button onClick={() => handleUpdate(link)}>Editar</button>
+            </div>
           </li>
         ))}
       </ul>
 
-      <button className="dark-mode-button" onClick={handleToggleDarkMode}>
-        {darkMode ? <i className="material-icons">🌑</i> : <i className="material-icons">🌤</i>}
-      </button>
+      <div>
+        <button onClick={handleToggleDarkMode}>
+          {darkMode ? 'Modo Claro' : 'Modo Escuro'}
+        </button>
+      </div>
+
+      {selectedLink && (
+        <div>
+          <h2>Editar Link</h2>
+          <form onSubmit={handleUpdate}>
+            {/* campos de edição */}
+          </form>
+        </div>
+      )}
+
+      <ToastContainer />
     </div>
   );
 };
