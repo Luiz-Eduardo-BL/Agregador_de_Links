@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-const baseUrl = "http://localhost:3001/";
+const baseUrl = "https://agregador-gamma.vercel.app/";
 
 const App = () => {
   const [formData, setFormData] = useState({
